@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background: linear-gradient(180deg, #000000,  #171242, rgb(11, 27, 58), rgb(0, 0, 0)); }
+        .container { max-width: 500px; margin: auto; }
+        form { background: #ffffff; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #ffffff; margin-bottom: 20px;}
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="email"], input[type="tel"] { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 3px; box-sizing: border-box; }
+        input[type="submit"] { display: block; width: 100%; padding: 12px; background: #007bff; color: #fff; border: none; border-radius: 3px; cursor: pointer; font-size: 16px; transition: background 0.3s ease; }
+        input[type="submit"]:hover { background: #0056b3; }
+        .flash-message { padding: 10px; border-radius: 3px; margin-bottom: 15px; color: white; display: none; }
+        .flash-message.error { background-color: #f44336; }
+        .flash-message.success { background-color: #4caf50; }
+        .note{ 
+            font-size: 12px;
+            color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DIVE INTO GEN AI</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div id="flash-message-container">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <form action="{{ url_for('register') }}" method="post">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="name">Degree:</label>
+            <input type="text" id="degree" name="degree" placeholder="B.Sc" required>
+           
+            <label for="class_section">Class and Section:</label>
+            <input type="text" id="class_section" name="class_section" placeholder="CS AI - A1" required>
+           
+            <label for="year">Year:</label>
+            <input type="text" id="year" name="year" placeholder="2" required>
+           
+            <label for="register_number">Register Number:</label>
+            <input type="text" id="register_number" name="register_number" required>
+           
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="example@email.com" required>
+           
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="9876543210" required>
+           <p class="note">NOTE: Before clicking the Register button make sure you are connected to good internet connection. After filling your details in the form kindly hit the Register button ONCE and wait for atleast 3 to 5 seconds to complete the registration process. For any support reach out to sist.sigai@gmail.com
+        </p>
+            <input type="submit" value="Register">
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(function(message) {
+                message.style.display = 'block';
+                setTimeout(function() {
+                    message.style.opacity = '0';
+                    setTimeout(function() {
+                        message.style.display = 'none';
+                    }, 500); // Matches the fade-out duration
+                }, 3000); // Show for 5 seconds
+            });
+        });
+    </script>
+</body>
+</html>

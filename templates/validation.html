@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Validation</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        #reader { width: 100%; height: 300px; }
+        #result { margin-top: 20px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        .valid { background-color: #d4edda; color: #155724; }
+        .invalid { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Validation</h1>
+        <div id="reader"></div>
+        <div id="result"></div>
+    </div>
+    <script>
+        function onScanSuccess(decodedText, decodedResult) {
+            console.log(`Decoded text: ${decodedText}`); // Debugging
+            html5QrcodeScanner.clear();
+
+            fetch('/validate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ qr_data: decodedText }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('result');
+                if (data.valid) {
+                    resultDiv.innerHTML = `
+                        <h2>Valid QR Code</h2>
+                        <p>Name: ${data.attendee.name}</p>
+                        <p>Degree: ${data.attendee.degree}</p>
+                        <p>Class & Section: ${data.attendee.class_section}</p>
+                        <p>Year: ${data.attendee.year}</p>
+                        <p>Register Number: ${data.attendee.register_number}</p>
+                        <p>Email: ${data.attendee.email}</p>
+                        <p>Phone: ${data.attendee.phone}</p>
+                    `;
+                    resultDiv.className = 'valid';
+                } else {
+                    resultDiv.innerHTML = `<h2>Invalid QR Code</h2><p>${data.message}</p>`;
+                    resultDiv.className = 'invalid';
+                }
+
+                setTimeout(() => {
+                    resultDiv.innerHTML = '';
+                    resultDiv.className = '';
+                    html5QrcodeScanner.render(onScanSuccess);
+                }, 2000);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = `<h2>Error</h2><p>There was an error processing your QR code. Please try again.</p>`;
+                resultDiv.className = 'invalid';
+                setTimeout(() => {
+                    resultDiv.innerHTML = '';
+                    resultDiv.className = '';
+                    html5QrcodeScanner.render(onScanSuccess);
+                }, 2000);
+            });
+        }
+
+        // Initialize the scanner
+        const html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", { fps: 10, qrbox: 250 }
+        );
+
+        // Ensure the scanner is defined before rendering
+        if (html5QrcodeScanner) {
+            html5QrcodeScanner.render(onScanSuccess);
+        } else {
+            console.error("Html5QrcodeScanner is not defined. Make sure the script is loaded correctly.");
+        }
+    </script>
+</body>
+</html>

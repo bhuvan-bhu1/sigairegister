@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIST ACM SIGAI Email Template</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            font-family: 'Poppins', Arial, Helvetica, sans-serif;
+            background-color: #dad4cb;
+        }
+        table {
+            border-spacing: 0;
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            background-color: #fcf9f5;
+            box-shadow: 0 0 25px rgba(0, 0, 0, .15);
+        }
+        td {
+            padding: 0;
+            text-align: center; /* Center align text and content in table cells */
+        }
+        img {
+            border: 0;
+            max-width: 100%;
+            height: auto;
+        }
+        .button {
+            color: #534c46;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            border: 2px solid #7f786e;
+            padding: 10px 30px;
+            background-color: #f4ede4;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .content {
+            padding: 20px;
+            font-size: 14px;
+            line-height: 23px;
+        }
+        .content h1 {
+            color: #775830;
+            font-size: 24px;
+            margin: 0 0 15px;
+            display: flex;
+
+        }
+        .content p {
+            margin: 0 0 15px;
+            text-align: justify;
+        }
+        .content p span{
+            font-size: 14px;
+            display: flex;
+        }
+        .footer {
+            padding: 20px;
+            background-color: #775830;
+            color: #fff;
+            text-align: center;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer img {
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+        .info {
+            text-align: left;
+            padding: 20px;
+        }
+        .info h3 {
+            margin: 0 0 10px;
+        }
+        .info ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+        .info li {
+            margin-bottom: 10px;
+        }
+        .social-media {
+            padding: 20px;
+            text-align: center;
+        }
+        .social-media img {
+            width: 40px;
+            margin: 0 10px;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+    </style>
+</head>
+<body>
+
+    <center>
+
+        <table>
+            <tr>
+                <td>
+                    <a href="https://sistsigai.acm.org/">
+                        <img src="https://i.postimg.cc/Kc3s3L9H/header.png" alt="SIST ACM" draggable="false">
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <a href="https://sistsigai.acm.org/">
+                        <img src="https://i.postimg.cc/P5qn51Ty/SIST-ACM-SIGAI-Student-chapter.png" alt="SIST ACM SIGAI Student Chapter" draggable="false">
+                    </a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="content">
+                    <h1>SIST ACM SIGAI Student Chapter</h1>
+                    <p><span>Dear {{ name }},</span><br>Thank you for registering for our event. We are delighted to welcome you to the event. Your participation is highly valued, and we look forward to your presence. This event promises to be an exciting and enriching experience, filled with insightful sessions, networking opportunities, and engaging activities.</p>
+                    <p>We are committed to making this event a memorable and rewarding experience for all attendees. Thank you once again for your registration and support. We look forward to welcoming you at the event.</p>
+                    <a href="https://sistsigai.acm.org/" class="button">Visit our site</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="info">
+                    <h3>Event Participant Details</h3>
+                    <p><b>Name:</b> {{ name }}<br>
+                    <b>Registration Number:</b> {{ register_number }}<br>
+                    <b>Email:</b> {{ email }}</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="info">
+                    <h3>Important Information</h3>
+                    <ul>
+                        <li>One-Time Use: This QR code is for one-time use only. It will become invalid after being scanned once.</li>
+                        <li>Proxy Attendance Prohibited: The use of this QR code by anyone other than the registered attendee is strictly prohibited. We have measures in place to prevent proxy attendance.</li>
+                        <li>Invalid QR Codes: If your QR code is found to be invalid upon scanning:
+                            <ul>
+                                <li>Please listen to and follow the instructions given by the event coordinator.</li>
+                                <li>Do not engage in arguments or disputes at the venue.</li>
+                                <li>If you believe there's an error, please step aside and speak with the designated support staff.</li>
+                            </ul>
+                        </li>
+                        <li>Arrival Time: Please arrive at least 10 minutes before the event start time to allow for the validation process.</li>
+                        <li>ID Verification: You may be asked to present a valid ID along with your QR code. Please have this ready.</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="footer">
+                    <div class="social-media">
+                        <a href="https://x.com/sist_sigai"><img src="https://i.postimg.cc/wBWbLk8S/xtw.png" alt="Twitter" draggable="false"></a>
+                        <a href="https://www.instagram.com/sist_sigai?igsh=bzBjc3Jmam85NTdn"><img src="https://i.postimg.cc/G2jLRNZZ/Instagram-logo-transparent-PNG.png" alt="Instagram" draggable="false"></a>
+                        <a href="https://medium.com/@sist.sigai"><img src="https://i.postimg.cc/Jnv6d4hx/62a24b0dd4cb2577520fca1b.png" alt="Medium" draggable="false"></a>
+                        <a href="https://www.linkedin.com/company/sist-acm-sigai-student-chapter/"><img src="https://i.postimg.cc/ydkpPS7W/link.pngg" alt="LinkedIn" draggable="false"></a>
+                    </div>
+                    <p><a href="https://sistsigai.acm.org/">SIST ACM SIGAI Student Chapter</a></p>
+                </td>
+            </tr>
+        </table>
+
+    </center>
+</body>
+</html>
